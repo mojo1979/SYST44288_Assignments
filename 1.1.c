@@ -2,8 +2,7 @@
  * Name(s): Daniel Nawrocki, John Mo
  * Created: September 6th, 2019 3:00 AM
  * Program Title: Assignment 1
- * Program Description: This program lists out Armstrong Numbers based on user
- 												Parameters entered at execution.
+ * Program Description: This program lists out Armstrong Numbers based on user parameters entered at execution.
  */
 
 // Headers and Gl. Variable Declarations

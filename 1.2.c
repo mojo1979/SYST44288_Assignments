@@ -2,8 +2,7 @@
  * Name(s): Daniel Nawrocki, John Mo
  * Created: September 6th, 2019 3:00 AM
  * Program Title: Assignment 1
- * Program Description: This program calculates euler's totient (phi) of a range
- 											  of numbers.
+ * Program Description: This program calculates euler's totient (phi) of a range of numbers.
  */
 
 // Headers and Gl. Variable Declarations
