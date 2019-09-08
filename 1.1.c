@@ -17,23 +17,24 @@ bool isArmstrongNumber ( int power, int number );
 // Main
 int main ( int argc, char *argv[] ) {
 	// Begin Coding Here!
-
+	
 	return 0;
 }
 
 // Functions
 bool isArmstrongNumber ( int power, int number ) {
 	// Local variables to hold sum of powered digits and digit divisor
-	int sum = 0, currentDivisor = 1;
+	int sum = 0, digitCount = 0, value = number;
 
-	// Sum each digit to the power
-	for ( int i = 0; i < power; i++ ) {
-		sum += pow((number / currentDivisor) % 10, power);
-		currentDivisor *= 10;
-	}
+	// Count the digits and sum power of current digit
+	do {
+		sum += pow( value % 10, power );
+		value = value / 10;
+		digitCount++;
+	} while ( value != 0 );
 
 	// if sum equals the number it is an Armstrong Number
-	if ( number == sum ) {
+	if ( number == sum && power == digitCount ) {
 		return true;
 	}
 	return false;
