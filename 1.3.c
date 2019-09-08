@@ -1,8 +1,8 @@
-/* Filename: 1.3.c 
+/* Filename: 1.3.c
  * Name(s): Daniel Nawrocki, John Mo
  * Created: September 6th, 2019 3:00 AM
  * Program Title: Assignment 1
- * Program Description: 
+ * Program Description:
  */
 
 // Headers and Gl. Variable Declarations
@@ -14,6 +14,7 @@
 
 // Main
 int main ( int argc, char *argv[] ) {
+printf("test");
 	// Begin Coding Here!
 
 	return 0;
