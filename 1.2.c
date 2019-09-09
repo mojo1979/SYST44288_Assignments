@@ -15,8 +15,15 @@ int phi ( int x );
 
 // Main
 int main ( int argc, char *argv[] ) {
-	// Begin Coding Here!
-	
+	// looping through all arguments starting from argv[1]
+	for(int i = 1 ; i<argc; i++){
+		int number = strtol(argv[i], NULL, 10);
+	printf("\n%d", phi(number));
+
+
+	}
+
+
 	return 0;
 }
 
@@ -27,6 +34,7 @@ int gcd ( int x, int y ) {
 		// Return GCD value
 		return x;
 	}
+
 	// Continue Euclidean Algorithm Recursively
 	return gcd( y, x % y );
 }
@@ -36,9 +44,11 @@ int phi ( int x ) {
 	unsigned int count = 0;
 	for ( int i = 1; i < x; i++ ) {
 		//Increase count if current number is GCD = 1 with x
+
 		if ( gcd( i, x ) == 1 ) {
 			count++;
 		}
+
 	}
 	//Return phi(x) = count
 	return count;
