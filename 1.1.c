@@ -16,10 +16,18 @@ bool isArmstrongNumber ( int power, int number );
 
 // Main
 int main ( int argc, char *argv[] ) {
-	// Begin Coding Here!
-	
-	return 0;
+// type casting into integers
+int k = strtol(argv[1], NULL, 10);
+int p = strtol(argv[2], NULL, 10);
+int q = strtol(argv[3], NULL, 10);
+// checking within the range to see if numbers are armstrong
+for(int i = p; i < q; i++){
+	if (isArmstrongNumber(k,i) == true)
+	printf("%d\n", i);
 }
+
+ 	return 0;
+ }
 
 // Functions
 bool isArmstrongNumber ( int power, int number ) {
