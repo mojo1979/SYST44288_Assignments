@@ -33,8 +33,10 @@ void rmchr ( char * x, char  y ){
 		if ( x[i] == y ) {
 
 			// Starting at index i, shift all letters down
-			for ( int j = i; j < strlen(x)-1; j++) {
-				x[j] = x[j+1];
+			int j = i + 1;
+			while (x[j] != 0) {
+				x[j - 1] = x[j];
+				j++;
 			}
 
 			// Set last char as string terminator char val 0
