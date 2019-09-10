@@ -7,7 +7,5 @@ This assignment contains 4 parts:
 
 	1. Armstrong Numbers
 	2. Euler's Totient (Phi)
-	3. Pointers Part 1
-	4. Pointers Part 2
-
-
+	3. Pointers Part 1 (rmchr)
+	4. Pointers Part 2 (rmstr)
