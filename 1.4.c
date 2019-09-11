@@ -46,31 +46,4 @@ void rmstr ( char * x, char * y ) {
 		}
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// for( int i = 0; i < strlen(x); i++) {
-	// 	for(int j = 0; j< strlen(y); j++)
-	// 	{
-	// 		if(x[i] == y[j])
-	// 		x[i] = x[i+1];
-	// 	}
-
 }
