@@ -23,5 +23,54 @@ int main ( int argc, char *argv[] ) {
 
 // Functions
 void rmstr ( char * x, char * y ) {
-	
+
+	for(int k=0; k < strlen(y); k++){
+		for( int i = 0; i < strlen(x); i++) {
+
+			// If current character is equal to character to remove
+			if ( x[i] == y[k] ) {
+
+				// Starting at index i, shift all letters down
+				int j = i + 1;
+				while (x[j] != 0) {
+					x[j - 1] = x[j];
+					j++;
+				}
+
+				// Set last char as string terminator char val 0
+				x[strlen(x)-1] = 0;
+
+				// Set index back to check if char is still equal to character to remove
+				i--;
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// for( int i = 0; i < strlen(x); i++) {
+	// 	for(int j = 0; j< strlen(y); j++)
+	// 	{
+	// 		if(x[i] == y[j])
+	// 		x[i] = x[i+1];
+	// 	}
+
 }
