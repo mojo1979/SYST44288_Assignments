@@ -1,7 +1,7 @@
 /* Filename: 1.1.c
  * Name(s): Daniel Nawrocki, John Mo
  * Created: September 6th, 2019 3:00 AM
- * Program Title: Assignment 1
+ * Program Title: Assignment 1 Part 1
  * Program Description: This program lists out Armstrong Numbers based on user parameters entered at execution.
  */
 
@@ -16,15 +16,16 @@ bool isArmstrongNumber ( int power, int number );
 
 // Main
 int main ( int argc, char *argv[] ) {
-// type casting into integers
-int k = strtol(argv[1], NULL, 10);
-int p = strtol(argv[2], NULL, 10);
-int q = strtol(argv[3], NULL, 10);
-// checking within the range to see if numbers are armstrong
-for(int i = p; i < q; i++){
-	if (isArmstrongNumber(k,i) == true)
-	printf("%d\n", i);
-}
+	// type casting into integers
+	int k = strtol(argv[1], NULL, 10);
+	int p = strtol(argv[2], NULL, 10);
+	int q = strtol(argv[3], NULL, 10);
+
+	// checking within the range to see if numbers are armstrong
+	for(int i = p; i < q; i++){
+		if (isArmstrongNumber(k,i) == true)
+		printf("%d\n", i);
+	}
 
  	return 0;
  }
@@ -45,5 +46,7 @@ bool isArmstrongNumber ( int power, int number ) {
 	if ( number == sum && power == digitCount ) {
 		return true;
 	}
+
+	// Return false otherwise
 	return false;
 }

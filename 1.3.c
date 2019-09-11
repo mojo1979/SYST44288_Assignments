@@ -1,7 +1,7 @@
 /* Filename: 1.3.c
  * Name(s): Daniel Nawrocki, John Mo
  * Created: September 6th, 2019 3:00 AM
- * Program Title: Assignment 1
+ * Program Title: Assignment 1 Part 3
  * Program Description: Implements an function (rmchr) to remove a character from a string.
  */
 
@@ -11,7 +11,7 @@
 #include<string.h>
 
 // Function Prototypes
-void rmchr ( char * x, char y );
+void rmchr ( char * str, char c );
 
 // Main
 int main ( int argc, char *argv[] ) {
@@ -25,22 +25,22 @@ int main ( int argc, char *argv[] ) {
 }
 
 // Functions
-void rmchr ( char * x, char  y ){
+void rmchr ( char * str, char  c ){
 	// For each charater of the string
-	for( int i = 0; i < strlen(x); i++) {
+	for( int i = 0; i < strlen(str); i++) {
 
 		// If current character is equal to character to remove
-		if ( x[i] == y ) {
+		if ( str[i] == c ) {
 
 			// Starting at index i, shift all letters down
 			int j = i + 1;
-			while (x[j] != 0) {
-				x[j - 1] = x[j];
+			while (str[j] != 0) {
+				str[j - 1] = str[j];
 				j++;
 			}
 
 			// Set last char as string terminator char val 0
-			x[strlen(x)-1] = 0;
+			str[strlen(str)-1] = 0;
 
 			// Set index back to check if char is still equal to character to remove
 			i--;
