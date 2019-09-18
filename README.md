@@ -1,9 +1,14 @@
 # SYST44288_Assignments
 OS Design and  Systems Programming Assignments
+
 Assignment_1 - C Programming Review
+
 Assignment_2 - Java Echo Server/Client and C filecopy
+
 Assignment_3 - TBD
+
 Assignment_4 - TBD
+
 
 Group Members: Daniel Nawrocki, John Mo
 
