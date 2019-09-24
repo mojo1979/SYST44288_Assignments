@@ -11,9 +11,16 @@ import java.util.*;
 public class EchoServer {
   // Global Variables
   public static void main(String[] args) {
-    // begin cooding here!
+try{
+    ServerSocket socket = new ServerSocket(6013);
+}
+
+
+
+
+
+  catch (IOException ioe) {
 
   }
-  // Methods
-
+}
 }
