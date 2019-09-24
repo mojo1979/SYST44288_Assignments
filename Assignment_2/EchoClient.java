@@ -11,9 +11,14 @@ import java.util.*;
 public class EchoClient {
   // Global Variables
   public static void main(String[] args) {
-    // begin cooding here!
+  try {
+  /* make connection to server socket */
+  Socket socket = new Socket("127.0.0.1",6013);
 
   }
-  // Methods
+  catch (IOException ioe) {
+  System.err.println(ioe);
+  }
+  }
 
 }
