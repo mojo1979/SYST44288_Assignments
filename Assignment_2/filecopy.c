@@ -23,6 +23,20 @@ int main ( int argc, char *argv[] ) {
     printf("Usage: filecopy source_file destination_file\n");
     return 0;
   }
+  int pInOut[2], pid, pipeRes;
+  pipeRes = pipe(pInOut);
+  if (pipeRes < 0) {
+    fprintf(stderr, "Pipe failed to initialize! Error Code: %d", pipeRes);
+    return 0;
+  }
+  printf("Pipe initialized! You may continue to program!");
+
+  //pid = fork();
+  /*if (pid == 0) {
+
+  } else {
+
+  }*/
 
 	return 0;
 }
