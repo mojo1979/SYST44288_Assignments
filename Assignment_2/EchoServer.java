@@ -13,14 +13,18 @@ public class EchoServer {
   public static void main(String[] args) {
 try{
     ServerSocket socket = new ServerSocket(6013);
+
+    while (true) {
+        Socket clientserver = socket.accept();
+        PrintWriter printout = new PrintWriter(clientserver.getOutputStream(), true);
+        printout.println(new java.util.Date().toString());
+        clientserver.close();
+      }
 }
 
 
-
-
-
   catch (IOException ioe) {
-
+System.err.println(ioe);
   }
 }
 }
