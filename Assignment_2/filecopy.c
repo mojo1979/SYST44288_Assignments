@@ -8,14 +8,22 @@
 // Headers and Gl. Variable Declarations
 #include<stdlib.h>
 #include<stdio.h>
+#include<unistd.h>
+#include<sys/types.h>
+#include<sys/wait.h>
 
 // Function Prototypes
-
+void readFIleToPipe();
+void writeFileFromPipe();
 
 // Main
 int main ( int argc, char *argv[] ) {
 	// Begin coding here!
-  
+  if ( argc > 3 || argc < 3 ) {
+    printf("Usage: filecopy source_file destination_file\n");
+    return 0;
+  }
+
 	return 0;
 }
 
