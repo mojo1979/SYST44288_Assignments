@@ -62,7 +62,7 @@ int main (int argc, char *argv[]) {
 void readFileToPipe(int *fd, FILE **fPtr) {
   close(fd[0]);
   char strBuf[STRING_BUF_SIZE];
-  while (fscanf(*fPtr, "%s", &strBuf) != EOF) {
+  while (fgets(strBuf, STRING_BUF_SIZE, *fPtr) != NULL) {
     write(fd[1], strBuf, STRING_BUF_SIZE);
   }
   close(fd[1]);
@@ -73,7 +73,7 @@ void writeFileFromPipe(int *fd, FILE **fPtr) {
   char strBuf[STRING_BUF_SIZE];
   int numSize;
   while ((numSize = read(fd[0], strBuf, STRING_BUF_SIZE)) > 0) {
-    fprintf(*fPtr, "%s\n", strBuf);
+    fputs(strBuf, *fPtr);
   }
   close(fd[0]);
 }
