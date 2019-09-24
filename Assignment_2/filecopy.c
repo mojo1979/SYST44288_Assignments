@@ -12,33 +12,84 @@
 #include<sys/types.h>
 #include<sys/wait.h>
 
+#define STRING_BUF_SIZE 255
+
 // Function Prototypes
-void readFIleToPipe();
-void writeFileFromPipe();
+void readFileToPipe(int *fd, FILE **fPtr);
+void writeFileFromPipe(int *fd, FILE **fPtr);
+int initFiles(char *inFileName, char *outFileName, FILE **inPtr, FILE **outPtr);
 
 // Main
-int main ( int argc, char *argv[] ) {
+int main (int argc, char *argv[]) {
 	// Begin coding here!
-  if ( argc > 3 || argc < 3 ) {
-    printf("Usage: filecopy source_file destination_file\n");
-    return 0;
+  int pfd[2], pid, pipeRes;
+  FILE *inputPtr, *outputPtr;
+
+  if (argc > 3 || argc < 3) {
+    fprintf(stderr, "Usage: filecopy source_file destination_file\n");
+    return -1;
   }
-  int pInOut[2], pid, pipeRes;
-  pipeRes = pipe(pInOut);
+
+  pipeRes = pipe(pfd);
+
   if (pipeRes < 0) {
-    fprintf(stderr, "Pipe failed to initialize! Error Code: %d", pipeRes);
-    return 0;
+    perror("pipe() failed");
+    return -1;
   }
-  printf("Pipe initialized! You may continue to program!");
 
-  //pid = fork();
-  /*if (pid == 0) {
+  if (initFiles (argv[1], argv[2], &inputPtr, &outputPtr) == -1) {
+    return -1;
+  }
 
+  pid = fork();
+
+  if (pid > 0) {
+    printf("I'm a Parent! PID = %d\n", pid);
+    readFileToPipe(pfd, &inputPtr);
+    fclose(inputPtr);
+    wait(NULL);
+  } else if (pid < 0) {
+     perror("fork() failed");
   } else {
-
-  }*/
-
+    printf("I'm a Child! PID = %d\n", pid);
+    writeFileFromPipe(pfd, &outputPtr);
+    fclose(outputPtr);
+  }
 	return 0;
 }
 
 // Functions
+void readFileToPipe(int *fd, FILE **fPtr) {
+  close(fd[0]);
+  char strBuf[STRING_BUF_SIZE];
+  while (fscanf(*fPtr, "%s", &strBuf) != EOF) {
+    write(fd[1], strBuf, STRING_BUF_SIZE);
+  }
+  close(fd[1]);
+}
+
+void writeFileFromPipe(int *fd, FILE **fPtr) {
+  close(fd[1]);
+  char strBuf[STRING_BUF_SIZE];
+  int numSize;
+  while ((numSize = read(fd[0], strBuf, STRING_BUF_SIZE)) > 0) {
+    fprintf(*fPtr, "%s\n", strBuf);
+  }
+  close(fd[0]);
+}
+
+int initFiles(char *inFileName, char *outFileName, FILE **inPtr, FILE **outPtr) {
+  *inPtr = fopen(inFileName, "r");
+
+  if (*inPtr == NULL) {
+    perror("fopen() failed");
+    return -1;
+  }
+
+  *outPtr = fopen(outFileName, "w+");
+
+  if (*outPtr == NULL) {
+    perror("fopen() failed");
+    return -1;
+  }
+}
