@@ -28,7 +28,7 @@ int main (int argc, char *argv[]) {
 
   // Check argument length, display usage message if not enough arguments
   if (argc > 3 || argc < 3) {
-    fprintf(stderr, "Usage: filecopy source_file destination_file\n");
+    fprintf(stderr, "Usage: filecopy <source_file> <destination_file>\n");
     return -1;
   }
 
