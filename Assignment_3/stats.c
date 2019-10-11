@@ -11,15 +11,22 @@
 #include<unistd.h>
 #include<sys/types.h>
 #include<sys/wait.h>
+#include<errno.h>
+#include<pthread.h>
 
 // Function Prototypes
 
-
 // Main
 int main (int argc, char *argv[]) {
+	if (argc == 1) {
+		fprintf(stderr, "Usage: stats <num 1> <num 2> <num 3> ... <num n>");
+		return -1;
+	}
 
-  // Variables and pointers
-  // Being Coding Here!
+	int numbers[argc - 1];
+	for (int i = 1; i < argc; i++) {
+		// Get values
+	}
 
 	return 0;
 }
