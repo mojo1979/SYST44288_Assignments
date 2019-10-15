@@ -1,19 +1,14 @@
 
 # SYST44288_Assignments
 <p align="center">
+<img src="https://i.imgur.com/3hlvjON.png" width="25%" height="25%">
+
+<p align="center">
 OS Design and  Systems Programming Assignments
-
-
-Assignment_1 - C Programming Review
-
-Assignment_2 - Java Echo Server/Client and C filecopy
-
-Assignment_3 - Java Multithreaded EchoServer and C Stats
-
-Assignment_4 - TBD
-
-	
-	Group Members: Daniel Nawrocki, John Mo
+<p align="center">
+Group Members: Daniel Nawrocki, John Mo
+<br>
+<br>
 
 Assignment_1 contains 4 parts:
 
@@ -37,5 +32,3 @@ Assignment_3 contains 3 parts:
 Assignment_4 
 	
 	TBD...
-
-<img src="https://i.imgur.com/3hlvjON.png">
