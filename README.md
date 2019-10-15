@@ -8,7 +8,6 @@ OS Design and  Systems Programming Assignments
 <p align="center">
 Group Members: Daniel Nawrocki, John Mo
 <br>
-<br>
 
 Assignment_1 contains 4 parts:
 
