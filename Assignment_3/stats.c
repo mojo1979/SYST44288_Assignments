@@ -18,21 +18,24 @@
 int avgResult = 0;
 int minResult = 0;
 int maxResult = 0;
+int numOfValues = 0;
 
 // Function Prototypes
-void *thread_CalcAvg(void *vargp);
-void *thread_CalcMax(void *vargp);
-void *thread_CalcMin(void *vargp);
+void *thread_CalcAvg(void *numArray);
+void *thread_CalcMax(void *numArray);
+void *thread_CalcMin(void *numArrayS);
 
 // Main Function
 int main (int argc, char *argv[]) {
 	pthread_t threadId[3];
+  numOfValues = argc - 1;
+
 	if (argc == 1) {
 		fprintf(stderr, "Usage: stats <num 1> <num 2> <num 3> ... <num n>");
 		return -1;
 	}
 
-	int numbers[argc - 1];
+	int numbers[numOfValues];
 	for (int i = 1; i < argc; i++) {
 		// Get values
 		errno = 0;
@@ -41,27 +44,49 @@ int main (int argc, char *argv[]) {
 
 		}*/
 	}
-	pthread_create(&threadId[0], NULL, thread_CalcAvg, NULL);
-	pthread_create(&threadId[1], NULL, thread_CalcMax, NULL);
-	pthread_create(&threadId[2], NULL, thread_CalcMin, NULL);
+
+	// Start the threads
+	pthread_create(&threadId[0], NULL, thread_CalcAvg, numbers);
+	pthread_create(&threadId[1], NULL, thread_CalcMax, numbers);
+	pthread_create(&threadId[2], NULL, thread_CalcMin, numbers);
 
   // Wait for threads to finish
 	for (int i = 0; i < 3; i++) {
 		pthread_join(threadId[i], NULL);
 	}
+	printf("Average value is\n%d\n",avgResult);
+	printf("Minimum value is\n%d\n",minResult);
+	printf("Maximum value is\n%d\n",maxResult);
 
 	return 0;
 }
 
 // Functions
- void *thread_CalcAvg(void *vargp) {
-	 printf("Calculated Average\n");
+ void *thread_CalcAvg(void *numArray) {
+	 int *values = (int *)numArray;
+	 for (int i = 0; i < numOfValues; i++)
+	   avgResult += values[i];
+	 avgResult = avgResult/numOfValues;
  }
 
- void *thread_CalcMax(void *vargp) {
-	 printf("Calculated Max\n");
+ void *thread_CalcMax(void *numArray) {
+	 int *values = (int *)numArray;
+	 for (int i = 0; i < numOfValues; i++){
+		 if (i == 0) {
+			 maxResult = values[i];
+		 } else if (values[i] > maxResult) {
+			 maxResult = values[i];
+		 }
+	 }
  }
 
- void *thread_CalcMin(void *vargp) {
-	 printf("Calculated Min\n");
+ void *thread_CalcMin(void *numArray) {
+	 int *values = (int *)numArray;
+	 for (int i = 0; i < numOfValues; i++){
+		 if (i == 0) {
+			 minResult = values[i];
+		 } else if (values[i] < minResult) {
+			 minResult = values[i];
+		 }
+	 }
  }
