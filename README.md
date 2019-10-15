@@ -2,12 +2,13 @@
 # SYST44288_Assignments
 <p align="center">
 <img src="https://i.imgur.com/3hlvjON.png" width="25%" height="25%">
-
+<hr>
 <p align="center">
 OS Design and  Systems Programming Assignments
 <p align="center">
 Group Members: Daniel Nawrocki, John Mo
 <br>
+<hr>
 
 Assignment_1 contains 4 parts:
 
