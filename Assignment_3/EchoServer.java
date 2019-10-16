@@ -19,21 +19,28 @@
      try (
        ServerSocket sock =  new ServerSocket(6013);
        Socket client = sock.accept();
-       PrintWriter out = new PrintWriter(client.getOutputStream(), true);
-       InputStream inp = client.getInputStream();
-       BufferedReader in = new BufferedReader(new InputStreamReader(inp))
+
      ) {
-       String input;
 
-       // Repeat whatever was sent to the server back out to the socket
-       while(true){
-          input = in.readLine();
-          out.println(input);
-       }
 
-     // Catch Socket IO Errors
-     } catch (IOException ioe) {
-       System.err.println(ioe);
      }
+   }
+
+   public void run(){
+     try{
+     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+     InputStream inp = socket.getInputStream();
+     BufferedReader in = new BufferedReader(new InputStreamReader(inp));
+     String input;
+
+     // Repeat whatever was sent to the server back out to the socket
+     while(true){
+        input = in.readLine();
+        out.println(input);
+     }
+   }catch (IOException e) {
+        System.out.println(e);
+     }
+
    }
  }
