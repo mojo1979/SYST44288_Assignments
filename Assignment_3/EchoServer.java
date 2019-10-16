@@ -14,11 +14,10 @@ public class EchoServer {
   public static void main(String args[]) throws Exception {
     // Create a new server socket
     ServerSocket client = new ServerSocket(6013);
+
     while (true) {
-      //Accept client connections
-      Socket sock = client.accept();
-      // Create and start a new thread for client connection
-      new Thread(new serverThread(sock)).start();
+      // Create and start a new thread for accepted client connection
+      new Thread(new serverThread(client.accept())).start();
     }
   }
 }
@@ -40,10 +39,12 @@ class serverThread implements Runnable {
       BufferedReader in = new BufferedReader(new InputStreamReader(inStream))
     ){
       String input;
-      while(true) {
+      // Read from the socket and return the values until client exits
+      do {
         input = in.readLine();
         out.println(input);
-      }
+      } while(input.charAt(0) != '.');
+      threadSock.close();
       // Catch IO exceptions and print them to console
     } catch (IOException e) {
       System.out.println(e);
