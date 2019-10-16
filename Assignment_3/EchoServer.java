@@ -4,43 +4,36 @@
  * Program Title: Assignment 3 Question 2 - EchoServer
  * Program Description:
  */
- import java.io.*;
- import java.net.*;
- import java.util.*;
-
- public class EchoServer implements Runnable {
+import java.io.*;
+import java.net.*;
+import java.util.*;
+public class EchoServer implements Runnable {
    Socket socket;
    EchoServer(Socket csocket) {
       this.socket = socket;
    }
-   public static void main(String[] args) throws Exception {
+   public static void main(String args[]) throws Exception {
+      ServerSocket client = new ServerSocket(6013);
 
-     // Try with server socket resources to open a echo server
-     try (
-       ServerSocket sock =  new ServerSocket(6013);
-       Socket client = sock.accept();
-
-     ) {
-
-
-     }
+      while (true) {
+         Socket sock = client.accept();
+         new Thread(new threads(sock)).start();
+      }
    }
-
-   public void run(){
-     try{
-     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-     InputStream inp = socket.getInputStream();
-     BufferedReader in = new BufferedReader(new InputStreamReader(inp));
-     String input;
-
-     // Repeat whatever was sent to the server back out to the socket
-     while(true){
-        input = in.readLine();
-        out.println(input);
-     }
-   }catch (IOException e) {
-        System.out.println(e);
-     }
-
+   public void run() {
+      try {
+         PrintStream out = new PrintStream(socket.getOutputStream());
+         InputStream inp = socket.getInputStream();
+         BufferedReader in = new BufferedReader(new InputStreamReader(inp));
+         String input;
+         while(true) {
+           input = in.readLine();
+           out.println(input);
+         }
+        // pstream.close();
+        // csocket.close();
+      } catch (IOException e) {
+         System.out.println(e);
+      }
    }
- }
+}
