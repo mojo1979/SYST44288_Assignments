@@ -4,14 +4,16 @@
  * Program Title: Assignment 3 Question 2 - EchoServer
  * Program Description: A multithreaded Echo Server that replies to multiple clients
  */
+
+ // Import Java Packages & Libraries
 import java.io.*;
 import java.net.*;
 import java.util.*;
+
 public class EchoServer {
   public static void main(String args[]) throws Exception {
     // Create a new server socket
     ServerSocket client = new ServerSocket(6013);
-
     while (true) {
       //Accept client connections
       Socket sock = client.accept();
@@ -24,6 +26,7 @@ public class EchoServer {
 class serverThread implements Runnable {
   //Specific socket for client connection
   private Socket threadSock;
+
   public serverThread(Socket sock) {
     // Get socket from constructor init
     threadSock = sock;
@@ -43,7 +46,7 @@ class serverThread implements Runnable {
       }
       // Catch IO exceptions and print them to console
     } catch (IOException e) {
-         System.out.println(e);
+      System.out.println(e);
     }
   }
 }

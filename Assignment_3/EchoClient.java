@@ -4,6 +4,8 @@
  * Program Title: Assignment 3 Question 2 - EchoClient
  * Program Description: An Echo Client that connects to a multithreaded Echo Server
  */
+
+ // Import Java Packages & Libraries
  import java.io.*;
  import java.net.*;
  import java.util.*;

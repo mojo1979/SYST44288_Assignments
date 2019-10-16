@@ -1,6 +1,6 @@
 /* Filename: stats.c
  * Name(s): Daniel Nawrocki, John Mo
- * Created: October 1st, 2019 5:30 PM
+ * Created: October 8th, 2019 5:30 PM
  * Program Title: Assignment 3 Question 1 - Stats
  * Program Description: This C program creates threads to calculate the average, max and min values from a number of values passed as arguments.
  */
@@ -29,15 +29,21 @@ int main (int argc, char *argv[]) {
 	pthread_t threadId[3];
   numOfValues = argc - 1;
 
+  // Display usage message if no args detected
 	if (argc == 1) {
 		fprintf(stderr, "Usage: stats <num 1> <num 2> <num 3> ... <num n>\n");
 		return -1;
 	}
 
+  // initiate array for int values
 	int numbers[numOfValues];
+
+	// convert argv values into int array
 	for (int i = 1; i < argc; i++) {
 		// Get values
 		numbers[i-1] = strtol(argv[i], NULL, 10);
+
+		// print error message if invalid arguments found
 		if (numbers[i-1] == 0 && strcmp(argv[i], "0")) {
 			fprintf(stderr, "Invalid argument(s) \n");
 			return -1;
