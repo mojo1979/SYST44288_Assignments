@@ -8,8 +8,12 @@
  import java.net.*;
  import java.util.*;
 
- public class EchoServer {
-   public static void main(String[] args) {
+ public class EchoServer implements Runnable {
+   Socket socket;
+   EchoServer(Socket csocket) {
+      this.socket = socket;
+   }
+   public static void main(String[] args) throws Exception {
 
      // Try with server socket resources to open a echo server
      try (
