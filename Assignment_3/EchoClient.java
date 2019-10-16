@@ -1,11 +1,9 @@
 /* Filename: EchoClient.java
  * Name(s): Daniel Nawrocki, John Mo
- * Created: October 8st, 2019 5:30 PM
+ * Created: October 8th, 2019 5:30 PM
  * Program Title: Assignment 3 Question 2 - EchoClient
- * Program Description:
+ * Program Description: An Echo Client that connects to a multithreaded Echo Server
  */
-
-
  import java.io.*;
  import java.net.*;
  import java.util.*;
@@ -30,17 +28,24 @@
 
        // While input in not null and escape character not entered send input to server
        while ((line = stdIn.readLine()) != null) {
-         out.println(line);
-         if (line.charAt(0) == '.'){
-           Sock.close();
-           System.exit(0);
+         // Prevent Ssending empty new lines
+         if (line.length() != 0) {
+           out.println(line);
+
+           // Check for escape character '.'
+           if (line.charAt(0) == '.'){
+             Sock.close();
+             System.exit(0);
+           }
+
+           //Print reply from server
+           System.out.println("Server: " + bin.readLine());
          }
-         System.out.println("Server: " + bin.readLine());
        }
 
      // Catch Socket IO errors
      } catch (IOException ioe) {
-         System.err.println(ioe);
+       System.err.println(ioe);
      }
    }
  }
