@@ -1,4 +1,4 @@
-/* Filename: semi.c
+/* Filename: buffer.c
  * Name(s): Daniel Nawrocki, John Mo
  * Created: November 1st, 2019 8:00 AM
  * Program Title: Final Programming Project - Producer and Consumer Problem
@@ -53,7 +53,6 @@ void* producer (void* param) {
     }
     sem_post(&full);
   }
-  
 }
 
 void* consumer (void* param) {
