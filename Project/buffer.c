@@ -13,9 +13,7 @@
 #include <semaphore.h>
 #include <stdio.h>
 #include <time.h>
-
-typedef int buffer_item;
-#define BUFFER_SIZE 5
+#include "buffer.h"
 
 // Global Variables
 sem_t full, empty;
