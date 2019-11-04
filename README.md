@@ -16,19 +16,19 @@ Assignment_1 contains 4 parts:
 	2. Euler's Totient (Phi)
 	3. Pointers Part 1 (rmchr)
 	4. Pointers Part 2 (rmstr)
-	
+
 Assignment_2 contains 3 parts:
 
 	1. Echo Server (Java)
 	2. Echo Client (Java)
 	3. filecopy (C)
-	
+
 Assignment_3 contains 3 parts:
 
 	1. stats (C)
 	2. EchoClient (Java)
 	3. EchoServer (Java)
 
-Assignment_4 
-	
-	TBD...
+Project contains 1 part:
+
+	1. semi (C)

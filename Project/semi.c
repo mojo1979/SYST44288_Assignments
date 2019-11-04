@@ -31,12 +31,28 @@ int remove_item (buffer_item *item);
 // Main Function
 int main (int argc, char* argv[]) {
   // Begin coding here!
+  if (argc - 1 != 3) {
+    fprintf(stderr, "Usage: semi <run duration> <number of producer threads> <number of consumer threads>");
+    return -1;
+  }
+
   return 0;
 }
 
 // Function Definitions
 void* producer (void* param) {
-  //Producer Thread
+  buffer_item item;
+  while (1) {
+    sleep((rand()%5)+1);
+    item = rand();
+    sem_wait(&empty);
+    if(!insert_item(item)){
+      printf("Producer produced %d\n", item);
+    } else {
+      fprintf(stderr,"Producer Thread: Failed to insert item!");
+    }
+    sem_post(&full);
+  }
 }
 
 void* consumer (void* param) {
@@ -44,8 +60,15 @@ void* consumer (void* param) {
 }
 
 int insert_item (buffer_item item) {
-  // Insert Function
-  return 0;
+  buffer[front] = item;
+  if (front == (BUFFER_SIZE-1)) {
+    front = 0;
+    return 0;
+  } else {
+    front++;
+    return 0;
+  }
+  return -1;
 }
 
 int remove_item (buffer_item* item) {
