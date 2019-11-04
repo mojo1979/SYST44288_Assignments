@@ -31,4 +31,4 @@ Assignment_3 contains 3 parts:
 
 Project contains 1 part:
 
-	1. semi (C)
+	1. Buffer (C)
