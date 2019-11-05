@@ -40,6 +40,15 @@ int main (int argc, char* argv[]) {
   int Producer_PThreads[numProd], Consumer_PThreads[numCon];
   pthread_t workerThreads[numProd+numCon];
 
+  for (int i = 0; i < numProd; i++) {
+     Producer_PThreads[i] = pthread_create(&workerThreads[i], NULL, producer, NULL);
+   }
+   for (int i = numProd; i < numProd+numCon; i++) {
+     Consumer_PThreads[i-numProd] = pthread_create(&workerThreads[i], NULL, consumer, NULL);
+   }
+   buffer_item item;
+   sleep(napTime);
+
   return 0;
 }
 
