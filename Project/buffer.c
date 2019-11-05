@@ -33,6 +33,12 @@ int main (int argc, char* argv[]) {
     fprintf(stderr, "Usage: semi <run duration> <number of producer threads> <number of consumer threads>");
     return -1;
   }
+  int napTime = strtol(argv[1], NULL, 10), numProd = strtol(argv[2], NULL, 10), numCon = strtol(argv[3], NULL, 10);
+  srand(time(0));
+  sem_init(&empty, 0, BUFFER_SIZE);
+  sem_init(&full, 0, 0);
+  int Producer_PThreads[numProd], Consumer_PThreads[numCon];
+  pthread_t workerThreads[numProd+numCon];
 
   return 0;
 }
