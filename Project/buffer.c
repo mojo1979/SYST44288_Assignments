@@ -30,7 +30,7 @@ int remove_item (buffer_item *item);
 // Main Function
 int main (int argc, char* argv[]) {
   if (argc - 1 != 3) {
-    fprintf(stderr, "Usage: buffer <run duration> <number of producer threads> <number of consumer threads>");
+    fprintf(stderr, "Usage: buffer <run duration> <number of producer threads> <number of consumer threads>\n");
     return -1;
   }
 
@@ -80,7 +80,7 @@ void* producer (void* _param) {
     if(!insert_item(item)){
       printf("Producer produced %d\n", item);
     } else {
-      fprintf(stderr,"Producer Thread: Failed to insert item!");
+      fprintf(stderr,"Producer Thread: Failed to insert item!\n");
     }
 
     // Unlock buffer when done.
@@ -108,7 +108,7 @@ void* consumer (void* _param) {
     if(!remove_item(&item)){
       printf("Consumer consumed %d\n", item);
     } else {
-      fprintf(stderr, "Consumer Thread: Failed to remove item!");
+      fprintf(stderr, "Consumer Thread: Failed to remove item!\n");
     }
 
     // Release buffer when done (unlock).
