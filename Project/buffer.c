@@ -97,5 +97,14 @@ int insert_item (buffer_item item) {
 
 int remove_item (buffer_item* item) {
   // Remove Function
-  return 0;
+  *item = buffer[rear];
+if (rear == (BUFFER_SIZE-1)) {
+    rear = 0;
+    return 0;
+  } else {
+    rear++;
+    return 0;
+  }
+  return -1;
+
 }
