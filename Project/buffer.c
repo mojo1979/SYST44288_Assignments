@@ -69,7 +69,18 @@ void* producer (void* param) {
 }
 
 void* consumer (void* param) {
-  // Consumer Thread
+  // Consumer Threa
+  buffer_item item;
+  while (1) {
+    sleep((rand()%5)+1);
+    sem_wait(&full);
+    if(!remove_item(&item)){
+      printf("Consumer consumed %d\n", item);
+    } else {
+      fprintf(stderr, "Consumer Thread: Failed to remove item!");
+    }
+    sem_post(&empty);
+  }
 }
 
 int insert_item (buffer_item item) {
